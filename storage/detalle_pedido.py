@@ -7,12 +7,4 @@ detalle_pedido = [
         "numero_linera": 2.0,
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
 ]

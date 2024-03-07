@@ -1,10 +1,10 @@
 import modules.getClients as cli
 
-def search():
-    clientName: []
-    for i, val in enumerate(cli.cliente):
-        clientName.append({
-            "nombre_cliente": val.get("nombre_cliente"),
-            "codigo_cliente": val.get("codigo_cliente")
-        })
-    return clientName
+def getClienteEspaña():
+    result : []
+    for val in cli.cliente:
+        if (val.get("pais")== "Spain"):
+            result.append([
+                val.get("nombre_cliente")
+            ])
+    return result
