@@ -17,8 +17,8 @@ def getPedidoTarde():
             fecha1 = val.get("fecha_entrega")
             fecha2 = val.get("fecha_esperada")
             
-            inicio = datetime.strptime(fecha1, "%d-%m-%Y")
-            fin = datetime.strptime(fecha2, "%d-%m-%Y")
+            inicio = datetime.strptime(fecha1, "%Y-%m-%d")
+            fin = datetime.strptime(fecha2, "%Y-%m-%d")
             
             dife = inicio.date() - fin.date()
             dife = dife.days
@@ -54,8 +54,8 @@ def getPedido3DiasTarde():
         fecha1 = val.get("fecha_entrega")
         fecha2 = val.get("fecha_esperada")
             
-        inicio = datetime.strptime(fecha1, "%d-%m-%Y")
-        fin = datetime.strptime(fecha2, "%d-%m-%Y")
+        inicio = datetime.strptime(fecha1, "%Y-%m-%d")
+        fin = datetime.strptime(fecha2, "%Y-%m-%d")
             
         dife = inicio.date() - fin.date()
         dife = dife.days
