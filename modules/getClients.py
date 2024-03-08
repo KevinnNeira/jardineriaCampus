@@ -1,7 +1,7 @@
-import modules.getClients as cli
+import storage.cliente as cli
 
 def getClienteEspaña():
-    result : []
+    result = []
     for val in cli.cliente:
         if (val.get("pais")== "Spain"):
             result.append([

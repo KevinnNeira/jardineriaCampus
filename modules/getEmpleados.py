@@ -23,7 +23,7 @@ def getboss():
             ])
             return result
 
-def respresentanteVentasEmp():
+def getrepresentanteVentasEmp():
     result = []
     for val in x.empleado:
         if(val.get("puesto") != "Representante de ventas"):

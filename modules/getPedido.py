@@ -4,7 +4,7 @@ from datetime import datetime
 def getEstadoPedid():
     result = []
     for val in pedi.pedido:
-        if[val.get("estado")]:
+        if[val.get("estado")] in result:
             result
         else:
             result.append([val.get("estado")])
