@@ -13,7 +13,7 @@ def getEstadoPedid():
 def getPedidoTarde():
     result = []
     for val in pedi.pedido:
-        if[val.get("fecha_entrega") != None]:
+        if val.get("fecha_entrega") != None:
             fecha1 = val.get("fecha_entrega")
             fecha2 = val.get("fecha_esperada")
             
@@ -51,37 +51,37 @@ def getPedidoTarde():
 def getPedido3DiasTarde():
     result = []
     for val in pedi.pedido:
-        fecha1 = val.get("fecha_entrega")
-        fecha2 = val.get("fecha_esperada")
-            
-        inicio = datetime.strptime(fecha1, "%Y-%m-%d")
-        fin = datetime.strptime(fecha2, "%Y-%m-%d")
-            
-        dife = inicio.date() - fin.date()
-        dife = dife.days
-        
-        if dife >= 3:
-            if val.get("comentario") != None:
-                result.append([
-                    val.get("codigo_pedido"),
-                    val.get("codigo_cliente"),
-                    val.get("fecha_entrega"),
-                    val.get("fecha_esperada"),
-                    dife,
-                    val.get("comentario")
-                ])
+        if val.get("fecha_entrega") != None:
+            fecha1 = val.get("fecha_entrega")
+            fecha2 = val.get("fecha_esperada")
                 
-            else:
-                result.append([
-                    val.get("codigo_pedido"),
-                    val.get("codigo_cliente"),
-                    val.get("fecha_entrega"),
-                    val.get("fecha_esperada"),
-                    dife,
-                    val.get("No hay ningun comentario")
+            inicio = datetime.strptime(fecha1, "%Y-%m-%d")
+            fin = datetime.strptime(fecha2, "%Y-%m-%d")
+                
+            dife = inicio.date() - fin.date()
+            dife = dife.days
+            if dife < -3:
+                if val.get("comentario") != None:
+                    result.append([
+                        val.get("codigo_pedido"),
+                        val.get("codigo_cliente"),
+                        val.get("fecha_entrega"),
+                        val.get("fecha_esperada"),
+                        dife,
+                        val.get("comentario")
                     ])
+                    
+                else:
+                    result.append([
+                        val.get("codigo_pedido"),
+                        val.get("codigo_cliente"),
+                        val.get("fecha_entrega"),
+                        val.get("fecha_esperada"),
+                        dife,
+                        val.get("No hay ningun comentario")
+                        ])
+            else:
+                result
         else:
             result
-    else:
-        result
     return result

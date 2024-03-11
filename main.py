@@ -30,7 +30,10 @@ print(tabulate(pedido.getEstadoPedid(),headers=["Estados"],tablefmt="grid"))
 print(tabulate(pago.getpay(),headers=["codigo_cliente"],tablefmt="grid"))
 
 #9
-print(tabulate(pedido.getPedido3DiasTarde(),headers=["codigo_pedido","codigo_cliente","fecha_eperada","fecha_entrega","Dias de retrazo","Comentario"],tablefmt="grid"))
+print(tabulate(pedido.getPedidoTarde(),headers=["codigo_pedido","codigo_cliente","fecha_entrega","fecha_esperada","comentario"],tablefmt="grid"))
 
 #10
-print()
+print(tabulate(pedido.getPedido3DiasTarde(),headers=["codigo_pedido","codigo_cliente","fecha_entrega","fecha_esperada","comentario"],tablefmt="grid"))
+
+#11
+print(tabulate(pedido.getEstadoPedid(),headers=["codigo_pedido","comentario"],tablefmt="grid"))
