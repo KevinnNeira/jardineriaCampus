@@ -37,3 +37,6 @@ print(tabulate(pedido.getPedido3DiasTarde(),headers=["codigo_pedido","codigo_cli
 
 #11
 print(tabulate(pedido.getEstadoPedid(),headers=["codigo_pedido","comentario"],tablefmt="grid"))
+
+#12
+print
