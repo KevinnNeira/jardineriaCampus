@@ -6,9 +6,11 @@ def getempleadosboss(a):
             result.append([
                 val.get("nombre"),
                 val.get("apellido1"),
-                val.get("apellido2")
+                val.get("apellido2"),
+                val.get("email"),
+                val.get("codigo_jefe")
             ])   
-        return result
+    return result
     
 def getboss():
     result = []
@@ -21,16 +23,16 @@ def getboss():
                 val.get("apellido2"),
                 val.get("email")
             ])
-            return result
+    return result
 
 def getrepresentanteVentasEmp():
     result = []
     for val in x.empleado:
-        if(val.get("puesto") != "Representante de ventas"):
+        if(val.get("puesto") != "Representante Ventas"):
             result.append([
                 val.get("nombre"),
                 val.get("apellido1"),
                 val.get("apellido2"),
                 val.get("puesto")
             ])
-            return result
+    return result

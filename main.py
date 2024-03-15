@@ -1,3 +1,5 @@
+#/bin/python3 /home/Endor-155/jardineriaCampus/main.py
+
 from tabulate import tabulate
 import modules.getClients as clientes
 import modules.getEmpleados as empleados
@@ -5,38 +7,38 @@ import modules.getOficinas as oficinas
 import modules.getPago as pago
 import modules.getPedido as pedido
 
-#1 
+print("#1") 
 print(tabulate(oficinas.getoficinasciu(),headers=["codigo_oficina","Ciudad"],tablefmt="grid"))
 
-#2
+print("#2")
 print(tabulate(oficinas.getCiudadTelefonoEspaña(),headers=["ciudad","telefono"],tablefmt="grid"))
 
-#3
-print(tabulate(empleados.getempleadosboss(7),headers=["Nombre","Apellido2","Apellido2"],tablefmt="grid"))
+print("#3")
+print(tabulate(empleados.getempleadosboss(7),headers=["Nombre","Apellido 1","Apellido 2","Email","Codigo Jefe"],tablefmt="grid"))
 
-#4
-print(tabulate(empleados.getboss(),headers=["Nombre","Apellido1","Apellido2","Email"],tablefmt="grid"))
+print("#4")
+print(tabulate(empleados.getboss(),headers=["Puesto","Nombre","Apellido 1","Apellido 2","Email"],tablefmt="grid"))
 
-#5
-print(tabulate(empleados.getrepresentanteVentasEmp(),headers=["Nombre","Apellido1","Apellido2","Puesto"],tablefmt="grid"))
+print("#5")
+print(tabulate(empleados.getrepresentanteVentasEmp(),headers=["Nombre","Apellido 1","Apellido 2","Puesto"],tablefmt="grid"))
 
-#6
-print(tabulate(clientes.getClienteEspaña(),headers=["Nombre"],tablefmt="grid"))
+print("#6")
+print(tabulate(clientes.getClienteEspaña(),headers=["Nombre Clientes Españoles"],tablefmt="grid"))
 
-#7
+print("#7")
 print(tabulate(pedido.getEstadoPedid(),headers=["Estados"],tablefmt="grid"))
 
-#8
+print("#8")
 print(tabulate(pago.getpay(),headers=["codigo_cliente"],tablefmt="grid"))
 
-#9
-print(tabulate(pedido.getPedidoTarde(),headers=["codigo_pedido","codigo_cliente","fecha_entrega","fecha_esperada","comentario"],tablefmt="grid"))
+print("#9")
+print(tabulate(pedido.getPedidoTarde(),headers=["Codigo Pedido","Codigo Cliente","Fecha Esperada","Fecha Entrega","Dias de Retrazo"],tablefmt="grid"))
 
-#10
-print(tabulate(pedido.getPedido3DiasTarde(),headers=["codigo_pedido","codigo_cliente","fecha_entrega","fecha_esperada","comentario"],tablefmt="grid"))
+print("#10")
+print(tabulate(pedido.getPedido2DiasTarde(),headers=["Codigo Pedido","Codigo Cliente","Fecha Esperada","Fecha Entrega","Dias de Retrazo"],tablefmt="grid"))
 
-#11
+print("#11")
 print(tabulate(pedido.getEstadoPedid(),headers=["codigo_pedido","comentario"],tablefmt="grid"))
-
-#12
+exit()
+print("#12")
 print

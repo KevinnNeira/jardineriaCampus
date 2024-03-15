@@ -8,7 +8,7 @@ def getpay():
         fecha = datetime.strptime(fecha, "%Y-%m-%d")
         año = fecha.year
         if año == 2008:
-            if str(val.get("codigo_cliente"))not in result:
+            if [val.get("codigo_cliente")] not in result:
                 result.append([
                     val.get("codigo_cliente")
                 ])
