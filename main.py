@@ -57,3 +57,4 @@ print("#16")
 print(tabulate(clientes.getClientesMadrid(),headers=["Codigo Cliente","Nombre Cliente","Pais","Region","Codigo Empleado","Nombre Empleado","Puesto"],tablefmt="grid"))
 
 print("#17")
+print(tabulate(clientes.getRepresentanteClientes(),headers=["Codigo Cliente","Nombre Cliente","Codigo Empleado","Nombre"],tablefmt="grid"))

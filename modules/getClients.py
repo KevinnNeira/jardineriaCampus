@@ -52,7 +52,15 @@ def getRepresentanteClientes():
     result = []
     for val in cli.cliente:
         cod = val.get("codigo_empleado_rep_ventas")
-        codd = val.get("codigo_cliente")
-        coddd = val.get("nombre_cliente")
-        for val in emp.empleado():
-            if cod == "codigo_empleado"
+        cod2 = val.get("codigo_cliente")
+        cod3 = val.get("nombre_cliente")
+        for val in emp.empleado:
+            if cod == val.get("codigo_empleado"):
+                result.append([
+                cod2,
+                cod3,
+                val.get("codigo_empleado"),
+                val.get("nombre"),
+                f"{val.get('apellido1')}{val.get('apellido2')}"
+                ])
+    return result
