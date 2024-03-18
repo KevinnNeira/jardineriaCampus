@@ -54,4 +54,6 @@ print("#15")
 print(tabulate(producto.getornamentales(),headers=["Codigo Producto","Gama","Cantidada En Stock"],tablefmt="grid"))
 
 print("#16")
-print(tabulate)
+print(tabulate(clientes.getClientesMadrid(),headers=["Codigo Cliente","Nombre Cliente","Pais","Region","Codigo Empleado","Nombre Empleado","Puesto"],tablefmt="grid"))
+
+print("#17")
