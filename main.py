@@ -6,6 +6,7 @@ import modules.getEmpleados as empleados
 import modules.getOficinas as oficinas
 import modules.getPago as pago
 import modules.getPedido as pedido
+import modules.getProducto as producto
 
 print("#1") 
 print(tabulate(oficinas.getoficinasciu(),headers=["codigo_oficina","Ciudad"],tablefmt="grid"))
@@ -38,7 +39,19 @@ print("#10")
 print(tabulate(pedido.getPedido2DiasTarde(),headers=["Codigo Pedido","Codigo Cliente","Fecha Esperada","Fecha Entrega","Dias de Retrazo"],tablefmt="grid"))
 
 print("#11")
-print(tabulate(pedido.getEstadoPedid(),headers=["codigo_pedido","comentario"],tablefmt="grid"))
-exit()
+print(tabulate(pedido.getEstadoPedid(),headers=["Codigo Pedido","Comentario"],tablefmt="grid"))
+
 print("#12")
-print
+print(tabulate(pedido.getpedidosDeEnero(),headers=["Codigo Pedido","Fecha Esperada","Fecha entrega","Comentario"],tablefmt="grid"))
+
+print("#13")
+print(tabulate(pago.getPayPaypal2008(),headers=["Forma Pago","Fecha Pedido","Total"],tablefmt="grid"))
+
+print("#14")
+print(tabulate(pago.getformasPago(),headers=["Forma Pago"],tablefmt="grid"))
+
+print("#15")
+print(tabulate(producto.getornamentales(),headers=["Codigo Producto","Gama","Cantidada En Stock"],tablefmt="grid"))
+
+print("#16")
+print(tabulate)

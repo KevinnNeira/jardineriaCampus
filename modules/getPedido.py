@@ -61,3 +61,21 @@ def getPedido2DiasTarde():
         else:
             result
     return result
+
+def getpedidosDeEnero():
+    result = []
+    for val in pedi.pedido:
+        fecha = val.get("fecha_entrega")
+        estado = val.get("estado")
+        if fecha != None and estado == "Entregado":
+            fecha = val.get("fecha_entrega")
+            fecha = datetime.strptime(fecha, "%Y-%m-%d")
+            mes = fecha.month
+            if mes == 1:
+                result.append([
+                    val.get("codigo_pedido"),
+                    val.get("fecha_entrega"),
+                    val.get("fecha_esperada"),
+                    val.get("comentario")
+                ])
+    return result
