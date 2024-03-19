@@ -1,5 +1,6 @@
 import storage.cliente as cli
 import storage.empleado as emp
+import storage.pago as pay
 
 def getClienteEspaña():
     result = []
@@ -61,6 +62,50 @@ def getRepresentanteClientes():
                 cod3,
                 val.get("codigo_empleado"),
                 val.get("nombre"),
-                f"{val.get('apellido1')}{val.get('apellido2')}"
+                f"{val.get('apellido1')} {val.get('apellido2')}"
                 ])
+    return result
+
+def getpagos():
+    result =[]
+    for val in cli.cliente:
+        codigoRep = val.get("codigo_empleado_rep_ventas")
+        codigoCli = val.get("codigo_cliente")
+        num1 = val.get("codigo_cliente")
+        num2 = val.get("nombre_cliente")
+        for val in pay.pago:
+            if codigoCli == val.get("codigo_cliente"):
+                for val in emp.empleado:
+                    if codigoRep == val.get("codigo_empleado"):
+                        result.append([
+                            num1,
+                            num2,
+                            val.get("codigo_empleado"),
+                            val.get("nombre"),
+                            f"{val.get('apellido1')} {val.get('apellido2')}"
+                        ])
+    return result
+
+def getNopagos():
+    result =[]
+    listCodigoClientePago = []
+    for val in pay.pago:
+        if val.get("codigo_cliente") not in listCodigoClientePago:
+            listCodigoClientePago.append(val.get("codigo_cliente"))
+    for val in cli.cliente:
+        codigoRepresentante = val.get("codigo_empleado_rep_ventas")
+        codigoCliente = val.get("codigo_cliente")
+        num1 = val.get("codigo_cliente")
+        num2 = val.get("nombre_cliente")
+        if codigoCliente not in listCodigoClientePago:
+            for val in emp.empleado():
+                if codigoRepresentante == val.get("codigo_empleado"):
+                    if codigoCliente not in result:
+                        result.append([
+                            num1,
+                            num2,
+                            val.get("codigo_empleado"),
+                            val.get("nombre"),
+                            f"{val.get('apellido1')} {val.get('apellido2')}"
+                        ])
     return result
