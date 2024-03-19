@@ -1,6 +1,4 @@
-import storage.cliente as cli
-import storage.empleado as emp
-import storage.pago as pay
+
 
 def getClienteEspaña():
     result = []
