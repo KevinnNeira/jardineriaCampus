@@ -1,40 +1,19 @@
-
+import modules.getAllDAta as Data
 
 def getClienteEspaña():
     result = []
-    for val in cli.cliente:
+    for val in Data.Cliente():
         if (val.get("pais")== "Spain"):
             result.append([
                 val.get("nombre_cliente")
             ])
     return result
 
-#def getClientesMadrid():
-#    result = []
-#    for val in cli.cliente:
-#        region = val.get("region")
-#       if region == "Madrid":
-#       if region == "Madrid":
-#           num1 = val.get("codigo_cliente")
-#           num2 = val.get("nombre_cliente")
-#           num3 = val.get("pais")
-#           num4 = val.get("region")
-#           empleado = val.get("codigo_empleado_rep_ventas")
-#            if empleado == 11 or empleado == 30:
-#                 for val in emp.empleado:
-#                    result.append([
-#                       num1,num2,num3,num4,
-#                       val.get("codigo_empleado"),
-#                       val.get("nombre"),
-#                       val.get("puesto")
-#                   ])
-#   return result
-
 def getClientesMadrid():
     result = []
-    representantes = [e for e in emp.empleado if e.get("codigo_empleado") in [11, 30]]
+    representantes = [e for e in Data.Empleado if e.get("codigo_empleado") in [11, 30]]
     for rep in representantes:
-        for val in cli.cliente:
+        for val in Data.Cliente():
             if val.get("region") == "Madrid" and val.get("codigo_empleado_rep_ventas") == rep.get("codigo_empleado"):
                 result.append([
                     val.get("codigo_cliente"),
@@ -49,11 +28,11 @@ def getClientesMadrid():
 
 def getRepresentanteClientes():
     result = []
-    for val in cli.cliente:
+    for val in Data.Cliente():
         cod = val.get("codigo_empleado_rep_ventas")
         cod2 = val.get("codigo_cliente")
         cod3 = val.get("nombre_cliente")
-        for val in emp.empleado:
+        for val in Data.Empleado:
             if cod == val.get("codigo_empleado"):
                 result.append([
                 cod2,
@@ -66,14 +45,14 @@ def getRepresentanteClientes():
 
 def getpagos():
     result =[]
-    for val in cli.cliente:
+    for val in Data.Cliente():
         codigoRep = val.get("codigo_empleado_rep_ventas")
         codigoCli = val.get("codigo_cliente")
         num1 = val.get("codigo_cliente")
         num2 = val.get("nombre_cliente")
-        for val in pay.pago:
+        for val in Data.Pago():
             if codigoCli == val.get("codigo_cliente"):
-                for val in emp.empleado:
+                for val in Data.Empleado():
                     if codigoRep == val.get("codigo_empleado"):
                         result.append([
                             num1,
@@ -87,16 +66,16 @@ def getpagos():
 def getNopagos():
     result =[]
     listCodigoClientePago = []
-    for val in pay.pago:
+    for val in Data.Pago():
         if val.get("codigo_cliente") not in listCodigoClientePago:
             listCodigoClientePago.append(val.get("codigo_cliente"))
-    for val in cli.cliente:
+    for val in Data.Cliente():
         codigoRepresentante = val.get("codigo_empleado_rep_ventas")
         codigoCliente = val.get("codigo_cliente")
         num1 = val.get("codigo_cliente")
         num2 = val.get("nombre_cliente")
         if codigoCliente not in listCodigoClientePago:
-            for val in emp.empleado():
+            for val in Data.Empleado():
                 if codigoRepresentante == val.get("codigo_empleado"):
                     if codigoCliente not in result:
                         result.append([

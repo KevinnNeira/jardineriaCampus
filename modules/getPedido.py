@@ -1,9 +1,9 @@
-import storage.pedido as pedi
+import modules.getAllDAta as Data
 from datetime import datetime
 
 def getEstadoPedid():
     result = []
-    for val in pedi.pedido:
+    for val in Data.Pedido():
         if[val.get("estado")] in result:
             result
         else:
@@ -12,7 +12,7 @@ def getEstadoPedid():
 
 def getPedidoTarde():
     result = []
-    for val in pedi.pedido:
+    for val in Data.Pedido():
         if val.get("fecha_entrega") != None:
             fecha1 = val.get("fecha_entrega")
             fecha2 = val.get("fecha_esperada")
@@ -38,7 +38,7 @@ def getPedidoTarde():
 
 def getPedido2DiasTarde():
     result = []
-    for val in pedi.pedido:
+    for val in Data.Pedido():
         if val.get("fecha_entrega") != None:
             fecha1 = val.get("fecha_entrega")
             fecha2 = val.get("fecha_esperada")
@@ -64,7 +64,7 @@ def getPedido2DiasTarde():
 
 def getpedidosDeEnero():
     result = []
-    for val in pedi.pedido:
+    for val in Data.Pedido():
         fecha = val.get("fecha_entrega")
         estado = val.get("estado")
         if fecha != None and estado == "Entregado":

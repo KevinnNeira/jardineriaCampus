@@ -1,9 +1,9 @@
-import storage.pago as pay
+import modules.getAllDAta as Data
 from datetime import datetime
 
 def getpay():
     result = []
-    for val in pay.pago:
+    for val in Data.Pago():
         fecha = val.get("fecha_pago")
         fecha = datetime.strptime(fecha, "%Y-%m-%d")
         año = fecha.year
@@ -16,7 +16,7 @@ def getpay():
 
 def getPayPaypal2008():
     result = []
-    for val in pay.pago:
+    for val in Data.Pago():
         fecha = val.get("fecha_pago")
         fecha = datetime.strptime(fecha, "%Y-%m-%d")
         año = fecha.year
@@ -31,10 +31,15 @@ def getPayPaypal2008():
 
 def getformasPago():
     result = []
-    for val in pay.pago:
+    for val in Data.Pago():
         formap = [val.get("forma_pago")]
         if formap not in result: 
             result.append([
                 val.get("forma_pago")
             ])
     return result
+
+def menu():
+    print(f"""----MENÚ PAGOS----
+        
+        """)
