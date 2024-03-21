@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 import modules.delete as delete
 import modules.post as post
-
+import modules.update as update
 def getpay():
     result = []
     for val in Data.Pago():
@@ -50,6 +50,7 @@ def menu():
                     1.Consulta
                     2.Eliminar
                     3.Añadir
+                    4.Actualizar
                     
                     X.Salir
                     """)
@@ -98,13 +99,21 @@ def menu():
             elif pet == "2":
                 X = input("Ingrese id del pago a eliminar: ")
                 delete.Pago(X)
-                break            
-            elif pet1.upper() == "X":
-                os.system("clear")
-                break
+                break           
             elif pet == "3":
                 X = input("Ingrese el pago a añadir: ")
                 post.Pago(X)
+                input("Presiona enter para continuar")
+                os.system("clear")
+                break
+            elif pet == "4":
+                X = input("Ingrese el pago que quiera actualizar: ")
+                update.Pago(X)
+                input("Presiona enter para continuar")
+                os.system("clear")
+                break
+            elif pet.upper() == "X":
+                os.system("clear")
                 break
             else:
                 print("Esta opcion no es valida")

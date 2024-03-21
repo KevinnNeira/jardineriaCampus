@@ -3,6 +3,7 @@ from tabulate import tabulate
 import os
 import modules.delete as delete
 import modules.post as post
+import modules.update as update
 
 def getClienteEspaña():
     result = []
@@ -97,6 +98,7 @@ def menu():
                     1.Consulta
                     2.Eliminar
                     3.Añadir
+                    4.Actualizar
                     
                     X.Salir
                     """)
@@ -161,12 +163,20 @@ def menu():
                 input("Presiona enter para continuar")
                 os.system("clear")
                 break
-            elif pet.upper() == "X":
-                os.system("clear")
-                break
             elif pet == "3":
                 X = input("Ingrese cliente a añadir: ")
                 post.Cliente(X)
+                input("Presiona enter para continuar")
+                os.system("clear")
+                break
+            elif pet == "4":
+                X = input("Ingrese el cliente que quiera actualizar: ")
+                update.Producto(X)
+                input("Presiona enter para continuar")
+                os.system("clear")
+                break
+            elif pet.upper() == "X":
+                os.system("clear")
                 break
             else:
                 print("Esta opcion no es valida")

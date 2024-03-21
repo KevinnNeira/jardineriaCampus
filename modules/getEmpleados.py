@@ -3,6 +3,7 @@ import os
 from tabulate import tabulate
 import modules.delete as delete
 import modules.post as post
+import modules.update as update
 
 def getempleadosboss(a):
     result = []
@@ -50,24 +51,22 @@ def menu():
                 1.Consulta
                 2.Eliminar
                 3.Añadir
-            
+                4.Actualizar
+                
                 X.Salir
                 """)
         
         pet = input("Ingrese la opcion a la que quiera acceder: ")
-        if pet == "1":
+        if pet == "2":
             while True:
                 print(f"""
-                    ----Consultas----
+                    ----Eliminar----
                     
-                    1.Consultar empleados según codigo de jefe
-                    2.Extraer informacion jefe
-                    3.Consutltar empleados representante de ventas 
+                    1.Ingrese el id del empleado que desea eliminar
                     
                     X.Salir
                     """)
                 break
-        
             
             while True:
                 pet1 = input("Ingrese opcion: ")
@@ -75,17 +74,6 @@ def menu():
                 if pet1 == "1":
                     a = int(input("Ingrese el codigo del jefe para buscar los empleados: "))
                     print(tabulate(getempleadosboss(a), headers=["Nombre","Primer Apellido","Segundo Apellido","Email","Codigo Jefe"], tablefmt="github"))
-                    input("Presiona enter para continuar")
-                    os.system("clear")
-                    break
-                    
-                elif pet1 == "2":
-                    print(tabulate(getboss(), headers=["Nombre","Primer Apellido","Segundo Apellido","Email","Codigo Jefe"], tablefmt="github"))
-                    input("Presiona enter para continuar")
-                    os.system("clear")
-                    break
-                elif pet1 == "3":
-                    print(tabulate(getrepresentanteVentasEmp(), headers=["Nombre","Primer Apellido","Segundo Apellido","Email","Codigo Jefe"], tablefmt="github"))
                     input("Presiona enter para continuar")
                     os.system("clear")
                     break
@@ -101,13 +89,64 @@ def menu():
             input("Presiona enter para continuar")
             os.system("clear")
             break                    
-        elif pet.upper() == "X":
+        elif pet == "3":
+            post.Empleado()
+            input("Presiona enter para continuar")
             os.system("clear")
             break
-        elif pet == "3":
-            X = input("Ingrese el empleado a añadir: ")
-            post.Empleado(X)
-            break
+        elif pet == "4":
+                X = input("Ingrese el empleado que quiera actualizar: ")
+                update.Producto(X)
+                input("Presiona enter para continuar")
+                os.system("clear")
+                break
+        elif pet.upper() == "X":
+                os.system("clear")
+                break
+        else:
+            print("Esta opcion no es valida")
+            input("Presione enter para continuar")
+            os.system("clear")
+            
+            
+            
+            
+            
+            
+        pet12 = input("Ingrese la opcion a la que quiera acceder: ")
+        if pet12 == "1":
+            while True:
+                print(f"""
+                    ----Consultas----
+                    
+                    1.Consultar empleados según codigo de jefe
+                    2.Extraer informacion jefe
+                    3.Consutltar empleados representante de ventas 
+                    
+                    X.Salir
+                    """)
+                break
+            
+            while True:
+                pet2 = input("Ingrese opcion: ")
+                
+                if pet2 == "1":
+                    a = int(input("Ingrese el codigo del jefe para eliminar el empleado: "))
+                    print(tabulate(getempleadosboss(a), headers=["Nombre","Primer Apellido","Segundo Apellido","Email","Codigo Jefe"], tablefmt="github"))
+                    input("Presiona enter para continuar")
+                    os.system("clear")
+                    break
+                elif pet2.upper() == "X":
+                    input("Presiona enter para continuar")
+                    os.system("clear")
+                    break
+                else:
+                    print("Esta opcion no es valida")
+                    input("Presione enter para continuar")
+                    os.system("clear")
+        elif pet2.upper() == "X":
+                os.system("clear")
+                break
         else:
             print("Esta opcion no es valida")
             input("Presione enter para continuar")

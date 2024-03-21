@@ -9,23 +9,23 @@ patronCodigoOficina = re.compile(r"^[A-Za-z]{3}-[A-Za-z]{2,3}$")
 
 # P A G O
 def Pago():
-    newPago = {}
+    Pago = {}
     
     while True:
         try:
-            newPago["codigo_cliente"] = int(input("Ingrese codigo del cliente: "))
+            Pago["codigo_cliente"] = int(input("Ingrese codigo del cliente: "))
             break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newPago["forma_pago"] = input("Ingrese forma de pago: ")
+            Pago["forma_pago"] = input("Ingrese forma de pago: ")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPago["id_transaccion"] = input("Ingrese ID de transaccion: ")
+            Pago["id_transaccion"] = input("Ingrese ID de transaccion: ")
             break
         except ValueError:
             print("Error, caracteres invalidos !")
@@ -33,7 +33,7 @@ def Pago():
         try:
             r = input("Ingrese fecha del pago, en el sigueinte formato: (YYY-MM-DD): ")
             if patronFecha.match(r):
-                newPago["fecha_pago"] = r
+                Pago["fecha_pago"] = r
                 break
             else:
                 print("Error, intentelo de nuevo")
@@ -41,13 +41,13 @@ def Pago():
             PermissionError("Error, caracteres invalidos !")
     while True:
         try:
-            newPago["total"] = int(input("Ingrese valor total del pago: "))
+            Pago["total"] = int(input("Ingrese valor total del pago: "))
             break
         except ValueError:
             print("Error, solo valores enteros !")
             
 
-    peticion = requests.post("http://154.38.171.54:5006/pagos", data=json.dumps(newPago))
+    peticion = requests.post("http://154.38.171.54:5006/pagos", data=json.dumps(Pago))
     res = peticion.json()
     res["Mensaje"] = "Pago Guardado"
     return [res]
@@ -96,7 +96,9 @@ def Empleado():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newEmpleado["codigo_oficina"] = input("Ingrese el codigo de la oficina del empleado: ")
+            e = input("Ingrese el codigo de la oficina del empleado: ")
+            if patronCodigoOficina.match(e):
+                newEmpleado["codigo_oficina"] = e
             break
         except ValueError:
             print("Error, caracteres invalidos !")
