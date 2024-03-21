@@ -1,4 +1,7 @@
-import modules.getAllDAta as Data
+import modules.getAllData as Data
+from tabulate import tabulate
+import os
+import modules.delete as delete
 
 def getoficinasciu():
     result = []
@@ -10,12 +13,74 @@ def getoficinasciu():
         ])
     return result
 
-def getCiudadTelefonoEspaña():
+def getPaisTelefonoCiudad(c):
     result = []
     for val in Data.Oficina():
-        if(val.get("pais")== "España"):
+        if(val.get("pais")== c):
             result.append ([
-                val.get("ciudad"),
+                val.get("codigo_oficina"),
+                val.get("pais"),
                 val.get("telefono")
             ])
     return result
+
+def menu():
+    while True:
+        print(f"""----Menu Oficina----
+                
+                1.Consultar
+                2.Eliminar
+              
+                X.Salir
+                """)
+        
+        pet = input("Ingrese la opcion a la que quiera acceder: ")
+        if pet == "1":
+            while True:
+                print(f"""
+                    ----Consultas----
+                    
+                    1.Consultar oficinas con su ciudad
+                    2.Consultar oficinas de españa con su telefono
+                    
+                    X.Salir
+                    """)
+                break
+        
+            
+            while True:
+                pet1 = input("Ingrese opcion: ")
+                
+                if pet1 == "1":
+                    print(tabulate(getoficinasciu(), headers=["Codigo Oficina","Ciudad"], tablefmt="github"))
+                    input("Presiona enter para continuar")
+                    os.system("clear")
+                    break
+                    
+                elif pet1 == "2":
+                    c = input("Ingrese pais a filtrar: ")
+                    print(tabulate(getPaisTelefonoCiudad(c), headers=["Codigo Oficina", "Pais","Telefono"], tablefmt="github"))
+                    input("Presiona enter para continuar")
+                    os.system("clear")
+                    break
+                elif pet1.upper() == "X":
+                    os.system("clear")
+                    break
+                else:
+                    print("Esta opcion no es valida")
+                    input("Presione enter para continuar")
+                    os.system("clear")
+        elif pet == "2":
+            X = input("Ingrese id de la oficina a eliminar")
+            delete.Oficina(X)
+            input("Presiona enter para continuar")
+            os.system("clear")
+            break                   
+        elif pet.upper() == "X":
+            os.system("clear")
+            break
+        
+        else:
+            print("Esta opcion no es valida")
+            input("Presione enter para continuar")
+            os.system("clear")

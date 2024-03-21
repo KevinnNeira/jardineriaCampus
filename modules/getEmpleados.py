@@ -1,6 +1,7 @@
-import modules.getAllDAta as Data
+import modules.getAllData as Data
 import os
 from tabulate import tabulate
+import modules.delete as delete
 
 def getempleadosboss(a):
     result = []
@@ -46,7 +47,8 @@ def menu():
         print(f"""----Menu Empleados----
                 
                 1.Consulta
-                
+                2.Eliminar
+              
                 X.Salir
                 """)
         
@@ -76,10 +78,14 @@ def menu():
                     break
                     
                 elif pet1 == "2":
-                    getboss()
+                    print(tabulate(getboss(), headers=["Nombre","Primer Apellido","Segundo Apellido","Email","Codigo Jefe"], tablefmt="github"))
+                    input("Presiona enter para continuar")
+                    os.system("clear")
                     break
                 elif pet1 == "3":
-                    getrepresentanteVentasEmp()
+                    print(tabulate(getrepresentanteVentasEmp(), headers=["Nombre","Primer Apellido","Segundo Apellido","Email","Codigo Jefe"], tablefmt="github"))
+                    input("Presiona enter para continuar")
+                    os.system("clear")
                     break
                 elif pet1.upper() == "X":
                     break
@@ -87,6 +93,15 @@ def menu():
                     print("Esta opcion no es valida")
                     input("Presione enter para continuar")
                     os.system("clear")
+        elif pet == "2":
+            X = input("Ingrese id del empleado a eliminar")
+            delete.Empleado(X)
+            input("Presiona enter para continuar")
+            os.system("clear")
+            break                    
+        elif pet.upper() == "X":
+            os.system("clear")
+            break
         else:
             print("Esta opcion no es valida")
             input("Presione enter para continuar")

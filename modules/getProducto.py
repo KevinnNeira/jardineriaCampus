@@ -1,15 +1,69 @@
-import modules.getAllDAta as Data
+import modules.getAllData as Data
+from tabulate import tabulate
+import os 
+import modules.delete as delete
 
-
-def getornamentales():
+def getornamentales(x):
     result = []
     for val in Data.Producto():
         ornamentales = val.get("gama")
-        stock = val.get("cantidad_en_stock")
-        if ornamentales == "Ornamentales" and stock > 100:
+        stock = val.get("cantidadEnStock")
+        if ornamentales == "Ornamentales" and stock > x:
             result.append ([
                 val.get("codigo_producto"),
                 val.get("gama"),
-                val.get("cantidad_en_stock")
+                val.get("cantidadEnStock")
             ])
     return result
+
+def menu():
+        while True:
+            print(f"""----Menu Producto----
+                    
+                    1.Consulta
+                    2.Eliminar
+                
+                    X.Salir
+                    """)
+            
+            pet = input("Ingrese la opcion a la que quiera acceder: ")
+            if pet == "1":
+                while True:
+                    print(f"""
+                        ----Consultas----
+                        
+                        1.Consulta Cantidad de Ornamentales
+                    
+                        X.Salir
+                        """)
+                    break
+            
+                
+                while True:
+                    pet1 = input("Ingrese opcion: ")
+                    
+                    if pet1 == "1":
+                        x = int(input("Ingrese la cantidad de Ornamentales: "))
+                        print(tabulate(getornamentales(x), headers=["Codigo Producto","Gama","Cantidad en stock"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                       
+                        break
+
+                    elif pet1.upper() == "X":
+                        os.system("clear")
+                        break
+                    else:
+                        print("Esta opcion no es valida")
+                        input("Presione enter para continuar")
+                        os.system("clear")
+            elif pet == "2":
+                X = input("Ingrese id del producto a eliminar")
+                delete.Producto(X)
+                break
+            elif pet.upper() == "X":
+                os.system("clear")
+                break
+            else:
+                print("Esta opcion no es valida")
+                input("Presione enter para continuar")
+                os.system("clear")

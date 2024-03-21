@@ -1,4 +1,7 @@
-import modules.getAllDAta as Data
+import modules.getAllData as Data
+from tabulate import tabulate
+import os
+import modules.delete as delete
 
 def getClienteEspaña():
     result = []
@@ -48,14 +51,13 @@ def getpagos():
     for val in Data.Cliente():
         codigoRep = val.get("codigo_empleado_rep_ventas")
         codigoCli = val.get("codigo_cliente")
-        num1 = val.get("codigo_cliente")
         num2 = val.get("nombre_cliente")
         for val in Data.Pago():
             if codigoCli == val.get("codigo_cliente"):
                 for val in Data.Empleado():
                     if codigoRep == val.get("codigo_empleado"):
                         result.append([
-                            num1,
+                            codigoCli,
                             num2,
                             val.get("codigo_empleado"),
                             val.get("nombre"),
@@ -63,7 +65,7 @@ def getpagos():
                         ])
     return result
 
-def getNopagos():
+def getNoPagos():
     result =[]
     listCodigoClientePago = []
     for val in Data.Pago():
@@ -86,3 +88,83 @@ def getNopagos():
                             f"{val.get('apellido1')} {val.get('apellido2')}"
                         ])
     return result
+
+def menu():
+        while True:
+            print(f"""----Menu Clientes----
+                    
+                    1.Consulta
+                    2.Eliminar
+                    
+                    X.Salir
+                    """)
+            
+            pet = input("Ingrese la opcion a la que quiera acceder: ")
+            if pet == "1":
+                while True:
+                    print(f"""
+                        ----Consultas----
+                        
+                        1.Obtener clientes de España
+                        2.Obtener clientes Madrid
+                        3.Obtener representante de clientes
+                        4.Consulta los pagos
+                        5.Consultar los NO pagos
+                          
+                        X.Salir
+                        """)
+                    break
+            
+                
+                while True:
+                    pet1 = input("Ingrese opcion: ")
+                    
+                    if pet1 == "1":
+                        print(tabulate(getClienteEspaña(), headers=["Nombre Cliente"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                       
+                        break
+                        
+                    elif pet1 == "2":
+                        print(tabulate(getClientesMadrid(), headers=["Codigo cliente","Nombre Cliente","Pais","Region","Codigo Empleado","Nombre","Puesto"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                       
+                        break
+                    elif pet1 == "3":
+                        print(tabulate(getRepresentanteClientes(), headers=["Codigo Cliente","Nombre Cliente","Codigo Empleado","Nombre","Apellidos"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")
+                        break  
+                    elif pet1 == "4":
+                        print(tabulate(getpagos(), headers=["Codigo Cliente","Nombre Cliente","Codigo Empleado","Nombre","Apellidos"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                                              
+                        break
+                    elif pet1 == "5":
+                        print(tabulate(getNoPagos(), headers=["Codigo Cliente","Nombre Cliente","Codigo Empleado","Nombre","Apellidos"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                                              
+                        break
+                    elif pet1.upper() == "X":
+                        os.system("clear")
+                        break
+                    
+                    else:
+                        print("Esta opcion no es valida")
+                        input("Presione enter para continuar")
+                        os.system("clear")
+            elif pet == "2":
+                X = input("Ingrese id del cliente a eliminar")
+                delete.Cliente(X)
+                input("Presiona enter para continuar")
+                os.system("clear")
+                break
+            elif pet.upper() == "X":
+                os.system("clear")
+                break
+                
+            else:
+                print("Esta opcion no es valida")
+                input("Presione enter para continuar")
+                os.system("clear")
+

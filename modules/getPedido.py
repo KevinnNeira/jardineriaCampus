@@ -1,5 +1,8 @@
-import modules.getAllDAta as Data
+import modules.getAllData as Data
 from datetime import datetime
+from tabulate import tabulate
+import os
+import modules.delete as delete
 
 def getEstadoPedid():
     result = []
@@ -79,3 +82,72 @@ def getpedidosDeEnero():
                     val.get("comentario")
                 ])
     return result
+
+def menu():
+        while True:
+            print(f"""----Menu Pedido----
+                    
+                    1.Consulta
+                    2.Eliminar
+                  
+                    X.Salir
+                    """)
+            
+            pet = input("Ingrese la opcion a la que quiera acceder: ")
+            if pet == "1":
+                while True:
+                    print(f"""
+                        ----Consultas----
+                        
+                        1.Consultar estado del pedido
+                        2.Consultar pedidos tarde
+                        3.Consultar pedidos 2 dias tarde
+                        4.Consultar pedidos de Enero
+                        
+                        X.Salir
+                        """)
+                    break
+            
+                
+                while True:
+                    pet1 = input("Ingrese opcion: ")
+                    
+                    if pet1 == "1":
+                        print(tabulate(getEstadoPedid(), headers=["Estado"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                       
+                        break
+                        
+                    elif pet1 == "2":
+                        print(tabulate(getPedidoTarde(), headers=["Codigo Pedido","Codigo Cliente","Fecha Entrega","Fecha Esperada"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                       
+                        break
+                    elif pet1 == "3":
+                        print(tabulate(getPedido2DiasTarde(), headers=["Codigo Pedido","Codigo Cliente","Fecha Entrega","Fecha Esperada"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                                              
+                        break
+                    elif pet1 == "4":
+                        print(tabulate(getpedidosDeEnero(), headers=["Codigo Pedido","Fecha Entrega","Fecha Esperada","Comentario"], tablefmt="github"))
+                        input("Presiona enter para continuar")
+                        os.system("clear")                                              
+                        break                    
+                    elif pet1.upper() == "X":
+                        break
+                    else:
+                        print("Esta opcion no es valida")
+                        input("Presione enter para continuar")
+                        os.system("clear")
+            elif pet == "2":
+                X = input("Ingrese id del pedido a eliminar")
+                delete.Pedido(X)
+                break
+
+            elif pet.upper() == "X":
+                os.system("clear")
+                break
+            else:
+                print("Esta opcion no es valida")
+                input("Presione enter para continuar")
+                os.system("clear")
