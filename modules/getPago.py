@@ -3,6 +3,7 @@ from tabulate import tabulate
 from datetime import datetime
 import os
 import modules.delete as delete
+import modules.post as post
 
 def getpay():
     result = []
@@ -48,6 +49,7 @@ def menu():
                     
                     1.Consulta
                     2.Eliminar
+                    3.Añadir
                     
                     X.Salir
                     """)
@@ -58,9 +60,9 @@ def menu():
                     print(f"""
                         ----Consultas----
                         
-                        1.C
-                        2.Extraer informacion jefe
-                        3.Consutltar empleados representante de ventas 
+                        1.Consultar datos de pago
+                        2.Consultar pagos por Paypal en el año 2008
+                        3.Consutltar formas de pago
                         
                         X.Salir
                         """)
@@ -94,11 +96,15 @@ def menu():
                         input("Presione enter para continuar")
                         os.system("clear")
             elif pet == "2":
-                X = input("Ingrese id del pago a eliminar")
+                X = input("Ingrese id del pago a eliminar: ")
                 delete.Pago(X)
                 break            
             elif pet1.upper() == "X":
                 os.system("clear")
+                break
+            elif pet == "3":
+                X = input("Ingrese el pago a añadir: ")
+                post.Pago(X)
                 break
             else:
                 print("Esta opcion no es valida")

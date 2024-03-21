@@ -2,6 +2,7 @@ import modules.getAllData as Data
 from tabulate import tabulate
 import os 
 import modules.delete as delete
+import modules.post as post
 
 def getornamentales(x):
     result = []
@@ -22,6 +23,7 @@ def menu():
                     
                     1.Consulta
                     2.Eliminar
+                    3.Añadir
                 
                     X.Salir
                     """)
@@ -57,11 +59,15 @@ def menu():
                         input("Presione enter para continuar")
                         os.system("clear")
             elif pet == "2":
-                X = input("Ingrese id del producto a eliminar")
+                X = input("Ingrese id del producto a eliminar: ")
                 delete.Producto(X)
                 break
             elif pet.upper() == "X":
                 os.system("clear")
+                break
+            elif pet == "3":
+                X = input("Ingrese el producto a añadir: ")
+                post.Producto(X)
                 break
             else:
                 print("Esta opcion no es valida")
