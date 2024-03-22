@@ -61,14 +61,18 @@ def menu():
                         os.system("clear")
             elif pet == "2":
                 X = input("Ingrese id del producto a eliminar: ")
+                print(f"""
+                ----Eliminar----
+                
+                1.Ingrese el id del producto que desea eliminar
+                """)
                 delete.Producto(X)
                 break
             elif pet == "3":
-                X = input("Ingrese el producto a añadir: ")
-                post.Producto(X)
+                post.Producto()
                 break
             elif pet == "4":
-                X = input("Ingrese el producto a añadir: ")
+                X = input("Ingrese el producto a actualizar: ")
                 update.Producto(X)
                 break
             elif pet.upper() == "X":

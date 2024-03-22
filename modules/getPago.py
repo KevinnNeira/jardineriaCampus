@@ -98,11 +98,15 @@ def menu():
                         os.system("clear")
             elif pet == "2":
                 X = input("Ingrese id del pago a eliminar: ")
+                print(f"""
+                ----Eliminar----
+                
+                1.Ingrese el id del pago que desea eliminar
+                """)
                 delete.Pago(X)
                 break           
             elif pet == "3":
-                X = input("Ingrese el pago a añadir: ")
-                post.Pago(X)
+                post.Pago()
                 input("Presiona enter para continuar")
                 os.system("clear")
                 break

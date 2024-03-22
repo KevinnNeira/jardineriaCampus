@@ -159,13 +159,17 @@ def menu():
                         os.system("clear")
             elif pet == "2":
                 X = input("Ingrese id del cliente a eliminar: ")
+                print(f"""
+                ----Eliminar----
+                
+                1.Ingrese el id del cliente que desea eliminar
+                """)
                 delete.Cliente(X)
                 input("Presiona enter para continuar")
                 os.system("clear")
                 break
             elif pet == "3":
-                X = input("Ingrese cliente a añadir: ")
-                post.Cliente(X)
+                post.Cliente()
                 input("Presiona enter para continuar")
                 os.system("clear")
                 break

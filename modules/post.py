@@ -340,7 +340,7 @@ def Producto():
     
     while True:
         try:
-            r = input("Ingrese codigo del producto, con el sgieuiente formato: (AA-000): ")
+            r = input("Ingrese codigo del producto, con el siguiente formato: (AA-000): ")
             r = r.upper()
             if patronCodigoProducto.match(r):
                 newProducto["codigo_producto"] = r

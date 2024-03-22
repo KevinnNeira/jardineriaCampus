@@ -57,12 +57,12 @@ def menu():
                 """)
         
         pet = input("Ingrese la opcion a la que quiera acceder: ")
-        if pet == "2":
+        if pet == "1":
             while True:
                 print(f"""
-                    ----Eliminar----
+                    ----Consulta----
                     
-                    1.Ingrese el id del empleado que desea eliminar
+                    1.Ingrese el id del empleado que desea consultar
                     
                     X.Salir
                     """)
@@ -78,6 +78,9 @@ def menu():
                     os.system("clear")
                     break
                 elif pet1.upper() == "X":
+                    print("Esta opcion no es valida")
+                    input("Presione enter para continuar")
+                    os.system("clear")
                     break
                 else:
                     print("Esta opcion no es valida")
@@ -85,6 +88,11 @@ def menu():
                     os.system("clear")
         elif pet == "2":
             X = input("Ingrese id del empleado a eliminar: ")
+            print(f"""
+                ----Eliminar----
+                
+                1.Ingrese el id del empleado que desea eliminar
+                """)
             delete.Empleado(X)
             input("Presiona enter para continuar")
             os.system("clear")

@@ -145,11 +145,15 @@ def menu():
                         os.system("clear")
             elif pet == "2":
                 X = input("Ingrese id del pedido a eliminar: ")
+                print(f"""
+                ----Eliminar----
+                
+                1.Ingrese el id del pedido que desea eliminar
+                """)
                 delete.Pedido(X)
                 break
             elif pet == "3":
-                X = input("Ingrese el producto a añadir: ")
-                post.Pedido(X)
+                post.Pedido()
                 input("Presiona enter para continuar")
                 os.system("clear")
                 break

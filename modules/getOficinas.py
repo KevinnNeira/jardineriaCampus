@@ -76,13 +76,17 @@ def menu():
                     os.system("clear")
         elif pet == "2":
             X = input("Ingrese id de la oficina a eliminar: ")
+            print(f"""
+                ----Eliminar----
+                
+                1.Ingrese el id de la oficina que desea eliminar
+                """)
             delete.Oficina(X)
             input("Presiona enter para continuar")
             os.system("clear")
             break                   
         elif pet == "3":
-            X = input("Ingrese la oficina a añadir: ")
-            post.Oficina(X)
+            post.Oficina()
             break
         elif pet == "4":
                 X = input("Ingrese la oficina que quiera actualizar: ")
