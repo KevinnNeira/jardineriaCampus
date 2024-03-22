@@ -62,7 +62,9 @@ def menu():
                 print(f"""
                     ----Consulta----
                     
-                    1.Ingrese el id del empleado que desea consultar
+                    1.Consultar el id del empleado que desea consultar por codigo de jefe
+                    2.Extraer informacion jefe por su codigo
+                    3.Consultar empleados representante de ventas
                     
                     X.Salir
                     """)
